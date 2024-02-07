@@ -1,5 +1,7 @@
 # Introduccion a TypeSicpt
 
+Este directorio es un seguimineto al aprendizaje de typeScript
+
 # Creacion y caracteristicas del proyecto
 
 Se ejecuta `yarn create vite` para crear un proyecto nuevo.
