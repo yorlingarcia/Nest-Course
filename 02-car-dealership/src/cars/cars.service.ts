@@ -20,7 +20,11 @@ export class CarsService {
     },
   ];
 
-  get cars() {
+  finAll() {
     return this._cars;
+  }
+
+  finOneById(id: number) {
+    return this._cars.find((car) => car.id === id);
   }
 }

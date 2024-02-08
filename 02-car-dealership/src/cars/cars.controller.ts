@@ -6,14 +6,14 @@ export class CarsController {
   constructor(private readonly carsService: CarsService) {}
   @Get()
   getAllCars() {
-    return this.carsService.cars;
+    return this.carsService.finAll();
   }
 
   @Get(':id')
   getCarById(@Param('id') id: string) {
     const paramId = +id;
     if (isNaN(paramId)) return { error: 'Id should must be a number' };
-    const car = this.carsService.cars.find((car) => car.id === paramId);
+    const car = this.carsService.finOneById(paramId);
     if (!car) return { error: `Car whit id ${paramId} not found` };
     return { car };
   }
