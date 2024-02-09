@@ -56,4 +56,8 @@ export class BrandsService {
     this.brands = this.brands.filter((brand) => brand.id !== id);
     return { message: 'brand deleted' };
   }
+
+  fillBrandsWithSeedData(brands: Brand[]) {
+    this.brands = brands;
+  }
 }
