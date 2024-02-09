@@ -6,6 +6,7 @@ import {
   NotFoundException,
   Param,
   ParseIntPipe,
+  ParseUUIDPipe,
   Patch,
   Post,
   Put,
@@ -21,7 +22,7 @@ export class CarsController {
   }
 
   @Get(':id')
-  getCarById(@Param('id') id: string) {
+  getCarById(@Param('id', ParseUUIDPipe) id: string) {
     const car = this.carsService.finOneById(id);
     if (!car) throw new NotFoundException(`Car whit id ${id} not found`);
     return { car };

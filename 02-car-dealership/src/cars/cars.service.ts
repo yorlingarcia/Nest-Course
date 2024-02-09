@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Car } from './interfaces/car.interface';
-import { UuidAdapter } from 'src/config/uuid.adaptaer';
+import { UuidAdapter } from 'src/config/uuid.adapter';
 
 @Injectable()
 export class CarsService {
