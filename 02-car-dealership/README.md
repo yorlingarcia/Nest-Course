@@ -25,6 +25,7 @@
 ## Description
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Esta App es una REST API que usa la idea de modelos de carros, para llenar la base de datos en local ejecutar `http://localhost:3000/seed`
 
 ## Installation
 
