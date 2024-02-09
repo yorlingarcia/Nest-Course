@@ -3,7 +3,8 @@ import { IsOptional, IsString, IsUUID } from 'class-validator';
 export class UpdateCarDto {
   @IsString()
   @IsUUID()
-  readonly id: string;
+  @IsOptional()
+  readonly id?: string;
 
   @IsString()
   @IsOptional()
