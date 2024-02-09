@@ -3,7 +3,7 @@ import {
   Controller,
   Delete,
   Get,
-  NotFoundException,
+  // NotFoundException,
   Param,
   ParseIntPipe,
   ParseUUIDPipe,
@@ -28,9 +28,7 @@ export class CarsController {
 
   @Get(':id')
   getCarById(@Param('id', new ParseUUIDPipe({ version: '4' })) id: string) {
-    const car = this.carsService.finOneById(id);
-    if (!car) throw new NotFoundException(`Car whit id ${id} not found`);
-    return { car };
+    return this.carsService.finOneById(id);
   }
 
   @Post()
@@ -52,7 +50,7 @@ export class CarsController {
   }
 
   @Delete(':id')
-  deleteCar(@Param('id', ParseIntPipe) id: number) {
-    return { message: 'Car deleted!', id };
+  deleteCar(@Param('id', ParseUUIDPipe) id: string) {
+    return this.carsService.deleteCar(id);
   }
 }

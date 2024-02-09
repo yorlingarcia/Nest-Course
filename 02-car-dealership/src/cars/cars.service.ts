@@ -1,4 +1,8 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { Car } from './interfaces/car.interface';
 import { UuidAdapter } from 'src/config/uuid.adapter';
 import { CreateCarDto, UpdateCarDto } from './dtos';
@@ -29,7 +33,9 @@ export class CarsService {
   }
 
   finOneById(id: string) {
-    return this._cars.find((car) => car.id === id);
+    const car = this._cars.find((car) => car.id === id);
+    if (!car) throw new NotFoundException(`Car whit id ${id} not found`);
+    return car;
   }
 
   createCar(createCarDto: CreateCarDto) {
@@ -59,5 +65,12 @@ export class CarsService {
       return car;
     });
     return carDB;
+  }
+
+  deleteCar(id: string) {
+    // return this._cars.splice(this._cars.indexOf(this.finOneById(id)), 1);
+    const car = this.finOneById(id);
+    this._cars = this._cars.filter((car) => car.id !== id);
+    return car;
   }
 }
