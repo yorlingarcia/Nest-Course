@@ -1,9 +1,12 @@
 import {
+  Body,
   Controller,
+  Delete,
   Get,
   NotFoundException,
   Param,
   ParseIntPipe,
+  Patch,
   Post,
   Put,
 } from '@nestjs/common';
@@ -25,12 +28,25 @@ export class CarsController {
   }
 
   @Post()
-  createCar() {
-    return ['create Car!!'];
+  createCar(@Body() body: any) {
+    return { body };
   }
 
-  @Put()
-  updateCar() {
-    return ['update Car!'];
+  @Patch(':id')
+  updateCarPatch(@Param('id', ParseIntPipe) id: number, @Body() body: any) {
+    return {
+      id,
+      body,
+    };
+  }
+
+  @Put(':id')
+  updateCar(@Param('id', ParseIntPipe) id: number) {
+    return { message: 'updated Car!', id };
+  }
+
+  @Delete(':id')
+  deleteCar(@Param('id', ParseIntPipe) id: number) {
+    return { message: 'Car deleted!', id };
   }
 }

@@ -1,8 +1,9 @@
 import { Injectable } from '@nestjs/common';
+import { Car } from './interfaces/car.interface';
 
 @Injectable()
 export class CarsService {
-  private _cars = [
+  private _cars: Car[] = [
     {
       id: 1,
       brand: 'Toyota',
