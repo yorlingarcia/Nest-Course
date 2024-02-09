@@ -11,21 +11,21 @@ import { CreateCarDto, UpdateCarDto } from './dtos';
 export class CarsService {
   constructor() {}
   private _cars: Car[] = [
-    {
-      id: UuidAdapter.v4(),
-      brand: 'Toyota',
-      model: 'Civic',
-    },
-    {
-      id: UuidAdapter.v4(),
-      brand: 'Honda',
-      model: 'Corolla',
-    },
-    {
-      id: UuidAdapter.v4(),
-      brand: 'Jepp',
-      model: 'Cherokee',
-    },
+    // {
+    //   id: UuidAdapter.v4(),
+    //   brand: 'Toyota',
+    //   model: 'Civic',
+    // },
+    // {
+    //   id: UuidAdapter.v4(),
+    //   brand: 'Honda',
+    //   model: 'Corolla',
+    // },
+    // {
+    //   id: UuidAdapter.v4(),
+    //   brand: 'Jepp',
+    //   model: 'Cherokee',
+    // },
   ];
 
   finAll() {

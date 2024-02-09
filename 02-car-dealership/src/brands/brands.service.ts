@@ -7,11 +7,11 @@ import { UuidAdapter } from 'src/config/uuid.adapter';
 @Injectable()
 export class BrandsService {
   private brands: Brand[] = [
-    {
-      id: UuidAdapter.v4(),
-      name: 'Toyota',
-      createdAt: new Date().getTime(),
-    },
+    // {
+    //   id: UuidAdapter.v4(),
+    //   name: 'Toyota',
+    //   createdAt: new Date().getTime(),
+    // },
   ];
 
   create(createBrandDto: CreateBrandDto) {
