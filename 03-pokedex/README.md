@@ -15,7 +15,7 @@
 $ yarn install
 ```
 
-# Base de datos
+## Base de datos
 
 ```bash
 $ docker compose up -d
@@ -47,7 +47,7 @@ $ yarn run test:e2e
 $ yarn run test:cov
 ```
 
-# Staack usado
+## Stack usado
 
 - MongoDB
 - Nest
