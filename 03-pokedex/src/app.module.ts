@@ -3,7 +3,7 @@ import { join } from 'path';
 import { Module } from '@nestjs/common';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { PokemonModule } from './pokemon/pokemon.module';
-import { Mongoose } from 'mongoose';
+// import { Mongoose } from 'mongoose';
 import { MongooseModule } from '@nestjs/mongoose';
 import { CommonModule } from './common/common.module';
 import { SeedModule } from './seed/seed.module';
@@ -17,6 +17,7 @@ import { SeedModule } from './seed/seed.module';
     PokemonModule,
     CommonModule,
     SeedModule,
+    // CommonModule
   ],
   // controllers: [AppController],
   // providers: [AppService],
