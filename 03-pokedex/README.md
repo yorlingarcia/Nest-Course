@@ -18,7 +18,13 @@ $ yarn install
 ## Base de datos
 
 ```bash
+# create image
 $ docker compose up -d
+```
+
+```bash
+# Set Seed Data development
+$ http://localhost:3000/api/v2/seed
 ```
 
 ## Running the app
