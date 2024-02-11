@@ -83,6 +83,15 @@ export class PokemonService {
     return `Deleted pokemon with Id #${id}`;
   }
 
+  // async fillPokemonsWithSeedData(createPokemonsDto: CreatePokemonDto[]) {
+  //   try {
+  //     await this.pokemonModel.insertMany(createPokemonsDto);
+  //     return true;
+  //   } catch (error) {
+  //     this.handleExceptions(error);
+  //   }
+  // }
+
   private handleExceptions(error: any) {
     if (error.code === 11000)
       throw new BadRequestException(
