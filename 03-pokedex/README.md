@@ -15,6 +15,10 @@
 $ yarn install
 ```
 
+## Env
+
+Clonar las variables de entorno del archivo .env.template a un nuevo archivo llamado .env y recrear las variables con sus propios parametros
+
 ## Base de datos
 
 ```bash
