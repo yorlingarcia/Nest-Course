@@ -31,6 +31,11 @@ $ docker compose up -d
 $ http://localhost:3000/api/v2/seed
 ```
 
+```bash
+# crear imagen contenedora
+$ docker-compose -f docker-compose.prod.yaml --env-file .env.prod up --build
+```
+
 ## Running the app
 
 ```bash
