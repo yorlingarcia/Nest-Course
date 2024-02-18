@@ -15,6 +15,18 @@
 $ yarn install
 ```
 
+## Teslo Api
+
+1. clonar el archivo `.env.template` y cambiarlo a `.env`.
+2. cambiar las variables de entorno.
+3. Levantar la base de datos
+
+```bash
+$ docker compose up -d
+```
+
+No olvidar cambiar el puerto de exposicion si no se reconoce al levantar la imagen.
+
 ## Running the app
 
 ```bash
@@ -40,16 +52,6 @@ $ yarn run test:e2e
 # test coverage
 $ yarn run test:cov
 ```
-
-## Teslo Api
-
-1. Levantar la base de datos
-
-```bash
-$ docker compose up -d
-```
-
-No olvidar cambiar el puerto de exposicion si no se reconoce al levantar la imagen
 
 ## License
 
