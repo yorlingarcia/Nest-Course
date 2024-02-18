@@ -25,13 +25,12 @@ export class ProductsController {
 
   @Get()
   findAll(@Query() paginationDto: PaginationDto) {
-    console.log(paginationDto);
-    return this.productsService.findAll();
+    return this.productsService.findAll(paginationDto);
   }
 
-  @Get(':id')
-  findOne(@Param('id', ParseUUIDPipe) id: string) {
-    return this.productsService.findOne(id);
+  @Get(':term')
+  findOne(@Param('term') term: string) {
+    return this.productsService.findOne(term);
   }
 
   @Patch(':id')
@@ -40,7 +39,7 @@ export class ProductsController {
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
+  remove(@Param('id', ParseUUIDPipe) id: string) {
     return this.productsService.remove(id);
   }
 }
