@@ -62,3 +62,7 @@ $ yarn run test:cov
 ## License
 
 Nest is [MIT licensed](LICENSE).
+
+## Nota
+
+Tener en cuenta almacenar archivos en otra base de datos (cloudinary)
