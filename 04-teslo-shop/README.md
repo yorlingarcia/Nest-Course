@@ -27,6 +27,12 @@ $ docker compose up -d
 
 No olvidar cambiar el puerto de exposicion si no se reconoce al levantar la imagen.
 
+4. Para ejecutar la seed a usar
+
+```bash
+$ http://localhost:3000/api/seed
+```
+
 ## Running the app
 
 ```bash
