@@ -1,4 +1,8 @@
-import { Injectable } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  InternalServerErrorException,
+} from '@nestjs/common';
 import { CreateUserDto } from './dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from './entities/users.entity';
@@ -10,8 +14,15 @@ export class AuthService {
     @InjectRepository(User)
     private readonly userRepository: Repository<User>,
   ) {}
-  create(createAuthDto: CreateUserDto) {
-    return 'This action adds a new auth';
+
+  async create(createUserDto: CreateUserDto) {
+    try {
+      const user = this.userRepository.create(createUserDto);
+      await this.userRepository.save(user);
+      return user;
+    } catch (error) {
+      this.handleDbError(error);
+    }
   }
 
   findAll() {
@@ -28,5 +39,11 @@ export class AuthService {
 
   remove(id: number) {
     return `This action removes a #${id} auth`;
+  }
+
+  private handleDbError(error: any): never {
+    if (error.code === '23505') throw new BadRequestException(error.detail);
+    console.log({ error });
+    throw new InternalServerErrorException(`Please check server logs`);
   }
 }
