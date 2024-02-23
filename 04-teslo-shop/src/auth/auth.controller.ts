@@ -18,7 +18,7 @@ import { AuthGuard } from '@nestjs/passport';
 import { User } from './entities/users.entity';
 import { GetUser, RawHeaders } from './decorators';
 import { IncomingHttpHeaders } from 'http';
-import { UserRoleGuard } from './guards/user-role/user-role.guard';
+import { UserRoleGuard } from './guards/user-role.guard';
 
 @Controller('auth')
 export class AuthController {
