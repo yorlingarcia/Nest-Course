@@ -31,7 +31,7 @@ export class AuthService {
       });
       await this.userRepository.save(user);
       delete user.password;
-      //todo: retorna el jwt
+
       return {
         ...user,
         token: this.getJwtToken({ id: user.id }),
