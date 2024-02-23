@@ -16,7 +16,7 @@ import { CreateUserDto, LoginUserDto } from './dto';
 import { AuthGuard } from '@nestjs/passport';
 
 import { User } from './entities/users.entity';
-import { GetUser, RawHeaders } from './decorators';
+import { Auth, GetUser, RawHeaders } from './decorators';
 import { IncomingHttpHeaders } from 'http';
 import { UserRoleGuard } from './guards/user-role.guard';
 import { RoleProtected } from './decorators/role-protected.decorator';
@@ -66,6 +66,16 @@ export class AuthController {
     return {
       ok: true,
       message: 'Hola mundo private 2',
+      user,
+    };
+  }
+
+  @Get('private3')
+  @Auth(ValidRoles.admin) // coleccion de decoradores
+  testingPrivateRoute3(@GetUser() user: User) {
+    return {
+      ok: true,
+      message: 'Hola mundo private 3',
       user,
     };
   }
