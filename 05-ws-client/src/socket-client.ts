@@ -8,18 +8,19 @@ export const connectToServer = () => {
 };
 
 const addListeners = (socket: Socket) => {
-  const serverStatusLabel = document.querySelector("#server-status");
-  const clientsLb = document.querySelector("#clients-ul");
-  const messageForm = document.querySelector<HTMLFormElement>("#message-form");
+  const serverStatusLabel = document.querySelector("#server-status")!;
+  const clientsUl = document.querySelector("#clients-ul")!;
+  const messageForm = document.querySelector<HTMLFormElement>("#message-form")!;
   const messageInput =
-    document.querySelector<HTMLInputElement>("#message-input");
+    document.querySelector<HTMLInputElement>("#message-input")!;
+  const messagesUl = document.querySelector<HTMLUListElement>("#messages")!;
 
   socket.on("connect", () => {
-    serverStatusLabel!.innerHTML = "Connected";
+    serverStatusLabel.innerHTML = "Connected";
   });
 
   socket.on("disconnect", () => {
-    serverStatusLabel!.innerHTML = "Disconnected";
+    serverStatusLabel.innerHTML = "Disconnected";
   });
 
   socket.on("clients-updated", (clients: string[]) => {
@@ -29,14 +30,30 @@ const addListeners = (socket: Socket) => {
         <li>${clientId}</li>
       `;
     });
-    clientsLb!.innerHTML = clientsHtml;
+    clientsUl.innerHTML = clientsHtml;
   });
 
-  messageForm?.addEventListener("submit", (event) => {
+  messageForm.addEventListener("submit", (event) => {
     event.preventDefault();
-    if (messageInput!.value.trim().length <= 0) return;
-    socket.emit("message-from-client", messageInput?.value);
+    if (messageInput.value.trim().length <= 0) return;
+    socket.emit("message-from-client", { message: messageInput.value });
     // console.log({ id: "sdasdfsdfsad", message: messageInput?.value });
-    messageInput!.value = "";
+    messageInput.value = "";
   });
+
+  socket.on(
+    "message-from-server",
+    (payload: { fullName: string; message: string }) => {
+      console.log(payload);
+      const newMessage = `
+        <li>
+          <strong>${payload.fullName}: </strong>
+          <span>${payload.message}</span>
+        </li>
+      `;
+      const li = document.createElement("li");
+      li.innerHTML = newMessage;
+      messagesUl.append(li);
+    }
+  );
 };
