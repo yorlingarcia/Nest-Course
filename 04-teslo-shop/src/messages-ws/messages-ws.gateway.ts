@@ -6,7 +6,7 @@ import {
 import { MessagesWsService } from './messages-ws.service';
 import { Socket } from 'socket.io';
 
-@WebSocketGateway({ cors: true, namespace: '' })
+@WebSocketGateway({ cors: true, namespace: '/' })
 export class MessagesWsGateway
   implements OnGatewayConnection, OnGatewayDisconnect
 {
