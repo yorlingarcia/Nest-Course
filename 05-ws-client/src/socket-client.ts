@@ -49,7 +49,7 @@ const addListeners = (socket: Socket) => {
   socket.on(
     "message-from-server",
     (payload: { fullName: string; message: string }) => {
-      console.log(payload);
+      // console.log(payload);
       const newMessage = `
         <li>
           <strong>${payload.fullName}: </strong>

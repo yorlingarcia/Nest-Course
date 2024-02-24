@@ -66,7 +66,7 @@ export class MessagesWsGateway
 
     //! emite a todos
     this.wss.emit('message-from-server', {
-      fullName: 'Yorlin-Server',
+      fullName: this.messagesWsService.getUserFullName(client.id),
       message: payload.message || 'no message!!',
     });
   }
